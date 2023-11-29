@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: caching-ms
+    namespace: caching
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: caching-ms
+  template:
+    metadata:
+      labels:
+        app: caching-ms
+    spec:
+      containers:
+        - name: caching-ms
+          image: polasomeshwar7/platform_engg_caching:v1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
