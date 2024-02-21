@@ -1,0 +1,12 @@
+apiVersion: security.istio.io/v1beta1
+kind: RequestAuthentication
+metadata:
+  name: jwt-check
+  namespace: efk
+spec:
+  selector:
+    matchLabels:
+      app: efk-app
+  jwtRules:
+    - issuer: "http://10.63.33.181:32569/realms/AuthTest"
+      jwksUri: "http://10.63.33.181:32569/realms/AuthTest/protocol/openid-connect/certs" 

@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
     name: caching-ms
     namespace: caching
+    labels:
+      app: caching-ms
 spec:
   replicas: 1
   selector:
@@ -15,7 +17,7 @@ spec:
     spec:
       containers:
         - name: caching-ms
-          image: polasomeshwar7/platform_engg_caching:v1
+          image: polasomeshwar/platform_engg_caching:v1
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

@@ -1,0 +1,14 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: kafka-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - hosts:
+    - "kafka.example.com"  # replace with your actual hostname
+    port:
+      number: 80
+      name: http
+      protocol: HTTP

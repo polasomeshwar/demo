@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fluentd-config
+  namespace: efk
+data:
+  fluent.conf: |
+    # Your custom Fluentd configuration here
+    <source>
+      @type forward
+      port 24224
+    </source>
+    <match ** >
+    #  @type stdout
+     @type elasticsearch
+     host elasticsearch
+     port 9200
+     logstash_format true
+     flush_interval 5s
+    </match>

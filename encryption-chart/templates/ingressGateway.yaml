@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: cryptography-gateway
+  namespace: cryptography
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - hosts:
+    - "cryptography.example.com"  # replace with your actual hostname
+    port:
+      number: 80
+      name: http
+      protocol: HTTP

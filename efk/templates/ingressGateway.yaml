@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: efk-gateway
+  namespace: efk
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - hosts:
+    - "efk.example.com"  # replace with your actual hostname
+    port:
+      number: 80
+      name: http
+      protocol: HTTP

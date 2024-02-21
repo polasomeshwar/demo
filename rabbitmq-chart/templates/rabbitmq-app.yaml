@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: rabbitmq-app
+    namespace: rabbitmq-system
+    labels:
+      app: rabbitmq-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rabbitmq-app
+  template:
+    metadata:
+      labels:
+        app: rabbitmq-app
+    spec:
+      containers:
+        - name: rabbitmq-app
+          image: polasomeshwar/rabbit-mq:v1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080

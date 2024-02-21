@@ -1,0 +1,13 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: user-check
+  namespace: efk
+spec:
+  selector:
+    matchLabels:
+      app: efk-app
+  rules:
+  - from:
+    - source:
+        requestPrincipals: ["*"]

@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: caching-gateway
+  namespace: caching
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - hosts:
+    - "caching.example.com"  # replace with your actual hostname
+    port:
+      number: 80
+      name: http
+      protocol: HTTP

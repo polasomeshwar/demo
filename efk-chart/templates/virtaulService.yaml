@@ -1,0 +1,24 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: efk-virtualservice
+  namespace: efk
+spec:
+  hosts:
+  - "efk.example.com"  # replace with your actual hostname
+  gateways:
+  - efk-gateway
+  http:
+    - match:
+      - uri:
+          prefix: "/"
+      route:
+      - destination:
+#          host: efk-app
+          host: efk-service.efk.svc.cluster.local
+          port:
+#            number: 8080
+            number: 8080
+      rewrite:
+        uri: "/"
+        authority: efk-service.efk.svc.cluster.local:8080

@@ -1,0 +1,13 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: user-check
+  namespace: cryptography
+spec:
+  selector:
+    matchLabels:
+      app: cryptography-deploy
+  rules:
+  - from:
+    - source:
+        requestPrincipals: ["*"]

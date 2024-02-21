@@ -1,0 +1,13 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: user-check
+  namespace: caching
+spec:
+  selector:
+    matchLabels:
+      app: caching-ms
+  rules:
+  - from:
+    - source:
+        requestPrincipals: ["*"]

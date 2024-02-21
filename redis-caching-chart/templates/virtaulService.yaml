@@ -1,0 +1,22 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: caching-virtualservice
+  namespace: caching
+spec:
+  hosts:
+  - "caching.example.com"  # replace with your actual hostname
+  gateways:
+  - caching-gateway
+  http:
+    - match:
+      - uri:
+          prefix: "/"
+      route:
+      - destination:
+          host: caching-ms-service.caching.svc.cluster.local
+          port:
+            number: 8080
+      rewrite:
+        uri: "/"
+        authority: caching-ms-service.caching.svc.cluster.local:8080
