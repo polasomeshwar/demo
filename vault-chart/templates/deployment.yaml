@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vault-application
+  namespace: vault
+  labels:
+    app: vault-application
+spec:
+  selector:
+    matchLabels:
+      app: vault-application
+  template:
+    metadata:
+      labels:
+        app: vault-application
+    spec:
+      containers:
+      - name: vault-application
+        image: srinivas080801/secret-management:latest
+        ports:
+        - containerPort: 8088
+
+

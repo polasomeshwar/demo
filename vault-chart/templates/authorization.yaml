@@ -1,0 +1,13 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: user-check
+  namespace: vault
+spec:
+  selector:
+    matchLabels:
+      app: vault-application
+  rules:
+  - from:
+    - source:
+        requestPrincipals: ["*"]
