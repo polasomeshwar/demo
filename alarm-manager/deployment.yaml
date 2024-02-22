@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alarm-manager
+  namespace: alarm-manager
+  labels:
+    app: alarm-manager
+spec:
+  selector:
+    matchLabels:
+      app: alarm-manager
+  template:
+    metadata:
+      labels:
+        app: alarm-manager
+    spec:
+      containers:
+      - name: alarm-manager
+        image: 10.63.20.43:32003/alarm_img:latest
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+        - name: kubecrednew

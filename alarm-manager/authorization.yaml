@@ -1,0 +1,13 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: user-check
+  namespace: alarm-manager
+spec:
+  selector:
+    matchLabels:
+      app: alarm-manager
+  rules:
+  - from:
+    - source:
+        requestPrincipals: ["*"]
